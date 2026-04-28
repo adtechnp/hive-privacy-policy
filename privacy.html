@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Hive API Client</title>
+  <meta name="description" content="Privacy Policy for Hive API Client Chrome extension. Learn how we protect your data.">
+  <meta name="theme-color" content="#4f9eff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-0: #07090e;
+      --bg-1: #0c0f17;
+      --bg-2: #111520;
+      --bg-3: #161b28;
+      --border: #1f2740;
+      --text-primary: #dde2f0;
+      --text-secondary: #7d89a8;
+      --text-muted: #3f4d6e;
+      --accent: #4f9eff;
+      --accent-glow: rgba(79,158,255,0.12);
+      --success: #3dd68c;
+      --warning: #ffb547;
+      --danger: #ff5c6b;
+    }
+
+    html[data-theme="light"] {
+      --bg-0: #ffffff;
+      --bg-1: #f8fafc;
+      --bg-2: #f1f5fb;
+      --bg-3: #e8ecf5;
+      --border: #d0d7e8;
+      --text-primary: #0f1419;
+      --text-secondary: #4a5578;
+      --text-muted: #7d89a8;
+      --accent: #1d6fe8;
+      --accent-glow: rgba(29,111,232,0.1);
+      --success: #0a7c4b;
+      --warning: #b45800;
+      --danger: #c8102e;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-0);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(12, 15, 23, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    html[data-theme="light"] nav {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #4f9eff, #a06fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-2);
+      border-color: var(--accent);
+    }
+
+    /* ─── Header ─── */
+    .header {
+      margin-top: 70px;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, rgba(79,158,255,0.1) 0%, rgba(160,111,255,0.05) 100%);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .last-updated {
+      display: inline-block;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ─── Table of Contents ─── */
+    .toc-container {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .toc-container h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .toc-container ul {
+      list-style: none;
+    }
+
+    .toc-container li {
+      margin-bottom: 0.5rem;
+    }
+
+    .toc-container a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .toc-container a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ─── Main Content ─── */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 100px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .section h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .section ul {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .section li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--accent-glow);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin: 2rem 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .highlight-box strong {
+      color: var(--accent);
+    }
+
+    .permission-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .permission-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-3);
+    }
+
+    .permission-card strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .permission-card p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--bg-1);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      text-align: left;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-section h4 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      display: block;
+      margin: 0.5rem 0;
+      text-decoration: none;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 1rem;
+        flex-wrap: wrap;
+        height: auto;
+      }
+
+      nav ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+      }
+
+      .section h3 {
+        font-size: 1.1rem;
+      }
+
+      .toc-container {
+        padding: 1.5rem;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+    }
+
+    /* ─── Print Styles ─── */
+    @media print {
+      nav, footer {
+        display: none;
+      }
+
+      .header {
+        margin-top: 0;
+      }
+
+      body {
+        background: white;
+        color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">🐝 Hive</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Privacy Policy</h1>
+    <p>How we handle your data with Hive API Client</p>
+    <div class="last-updated">Last Updated: April 2026</div>
+  </section>
+
+  <!-- Table of Contents -->
+  <div class="toc-container">
+    <h3>📋 Table of Contents</h3>
+    <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#data-collection">Data We Collect</a></li>
+      <li><a href="#data-usage">How We Use Your Data</a></li>
+      <li><a href="#local-storage">Local Storage Only</a></li>
+      <li><a href="#permissions">Permissions Explained</a></li>
+      <li><a href="#security">Data Security</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#third-party">Third-Party Services</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Introduction -->
+    <section class="section" id="introduction">
+      <h2>1. Introduction</h2>
+      <p>Welcome to Hive API Client ("we", "us", "our", or "Company"). We are committed to protecting your privacy. This Privacy Policy explains our practices regarding data collection, usage, and protection for our Chrome extension.</p>
+      <p>We believe in transparency and user control. Your privacy is paramount, and we've designed Hive API Client with privacy-first principles.</p>
+    </section>
+
+    <!-- Data Collection -->
+    <section class="section" id="data-collection">
+      <h2>2. Data We Collect</h2>
+      <p>Hive API Client operates with minimal data collection. Here's what we collect and why:</p>
+      
+      <h3>Request Data</h3>
+      <p>API endpoints, headers, parameters, and request bodies you create are stored locally on your device only. This data is never transmitted to external servers.</p>
+
+      <h3>Collections</h3>
+      <p>Organized groups of your saved requests are stored locally in your browser's storage, allowing you to organize and reuse requests efficiently.</p>
+
+      <h3>Environment Variables</h3>
+      <p>Configuration data for different environments (dev, staging, prod) that you create are stored locally for seamless environment switching.</p>
+
+      <h3>User Preferences</h3>
+      <p>Theme selection (dark/light mode) and other UI preferences are stored to provide a personalized experience.</p>
+
+      <h3>Request History</h3>
+      <p>A log of requests you've made is stored locally for your convenience and quick access to frequently used endpoints.</p>
+
+      <div class="highlight-box">
+        <p><strong>🔒 Important:</strong> All of this data remains exclusively on your device. We never collect, transmit, or store any of this data on our servers.</p>
+      </div>
+    </section>
+
+    <!-- Data Usage -->
+    <section class="section" id="data-usage">
+      <h2>3. How We Use Your Data</h2>
+      <p>All data collection serves specific purposes to enhance your experience:</p>
+      <ul>
+        <li>To enable you to test and debug APIs</li>
+        <li>To save your requests and collections for future use</li>
+        <li>To maintain your request history</li>
+        <li>To preserve your preferences and settings</li>
+        <li>To provide a seamless multi-session experience</li>
+        <li>To improve the extension's performance and functionality</li>
+      </ul>
+      <p><strong>We do not:</strong> Sell, rent, or share your data with third parties. We do not use your data for marketing, profiling, or any purpose other than providing you with Hive API Client's core functionality.</p>
+    </section>
+
+    <!-- Local Storage -->
+    <section class="section" id="local-storage">
+      <h2>4. Local Storage Only</h2>
+      <p><strong>Your data never leaves your device.</strong> This is a core principle of Hive API Client:</p>
+      <ul>
+        <li>✅ Stores all data locally using Chrome's storage API</li>
+        <li>✅ Does not send your requests or data to any external server</li>
+        <li>✅ Does not use cloud synchronization</li>
+        <li>✅ Does not share data with third parties</li>
+        <li>✅ Does not use analytics or tracking tools</li>
+        <li>✅ Does not collect personal information</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>💡 Pro Tip:</strong> You have complete control over your data. Uninstall the extension at any time to completely remove all stored data, or manually delete individual requests and collections within the extension.</p>
+      </div>
+    </section>
+
+    <!-- Permissions -->
+    <section class="section" id="permissions">
+      <h2>5. Permissions Explained</h2>
+      <p>Hive API Client requires specific Chrome permissions. Here's what each permission is used for and why it's necessary:</p>
+
+      <div class="permission-card">
+        <strong>🗄️ Storage Permission</strong>
+        <p>Allows us to save your requests, collections, environments, preferences, and history locally on your device using Chrome's storage API. This enables persistence across browser sessions so you don't lose your work.</p>
+      </div>
+
+      <div class="permission-card">
+        <strong>📑 Tabs Permission</strong>
+        <p>Allows us to access information about open tabs to integrate with your browser and provide context-aware features. We use this to coordinate extension features with your browsing context.</p>
+      </div>
+
+      <div class="permission-card">
+        <strong>🌐 Host Permissions (All URLs)</strong>
+        <p>Allows us to send HTTP requests to any API endpoint you specify. This permission is essential for API testing functionality—you need to be able to send requests to any domain, localhost servers, or internal APIs without restrictions.</p>
+      </div>
+
+      <p><strong>Why we need these:</strong> Chrome's security model requires us to declare these permissions upfront. We only use each permission for its stated purpose.</p>
+    </section>
+
+    <!-- Security -->
+    <section class="section" id="security">
+      <h2>6. Data Security</h2>
+      <p>We implement multiple security measures to protect your data:</p>
+      <ul>
+        <li><strong>Local Storage:</strong> All data remains on your local device, eliminating transmission risks</li>
+        <li><strong>No Network Transmission:</strong> Your request data is never sent over the internet to our servers (only to the API endpoints you specify)</li>
+        <li><strong>Chrome Security Sandbox:</strong> Chrome's built-in security sandbox protects extension execution</li>
+        <li><strong>Content Security Policy:</strong> We implement strict CSP headers to prevent injection attacks</li>
+        <li><strong>Transparent Code:</strong> Code is available for inspection and community review</li>
+        <li><strong>No External Requests:</strong> The extension doesn't make background requests to tracking or analytics services</li>
+      </ul>
+    </section>
+
+    <!-- Retention -->
+    <section class="section" id="retention">
+      <h2>7. Data Retention</h2>
+      <p>Your data is retained based on your choices:</p>
+      <ul>
+        <li><strong>While Using:</strong> Data persists as long as the extension is installed and active</li>
+        <li><strong>Manual Deletion:</strong> You can delete individual requests, collections, or all data at any time through the extension interface</li>
+        <li><strong>Complete Removal:</strong> Uninstalling the extension removes all stored data</li>
+        <li><strong>Browser Data Clearing:</strong> Clearing your browser's stored data or extension data will remove all Hive API Client information</li>
+      </ul>
+      <p><strong>You maintain complete control</strong> over when your data is deleted. We don't automatically delete your data without your action.</p>
+    </section>
+
+    <!-- Third-Party Services -->
+    <section class="section" id="third-party">
+      <h2>8. Third-Party Services</h2>
+      <p>Hive API Client does not integrate with third-party services for data collection or analytics.</p>
+      <p><strong>External resources we use (with no data sharing):</strong></p>
+      <ul>
+        <li><strong>Google Fonts:</strong> For typography styling. This is loaded from Google's CDN but no personal data is shared—only standard HTTP requests</li>
+      </ul>
+      <p>We explicitly do NOT use:</p>
+      <ul>
+        <li>Analytics tools (Google Analytics, Mixpanel, etc.)</li>
+        <li>Crash reporting services</li>
+        <li>Error tracking tools</li>
+        <li>Session recording software</li>
+        <li>Data brokers or marketing platforms</li>
+      </ul>
+    </section>
+
+    <!-- Children's Privacy -->
+    <section class="section" id="children">
+      <h2>9. Children's Privacy</h2>
+      <p>Hive API Client is designed for developers and technical professionals and is not intended for children under 13.</p>
+      <p>We do not knowingly collect information from children under 13. If we become aware that we have collected personal information from a child under 13, we will delete such information and terminate the child's account immediately.</p>
+      <p>Parents or guardians who believe their child has provided information to Hive API Client should contact us immediately.</p>
+    </section>
+
+    <!-- Changes to Policy -->
+    <section class="section" id="changes">
+      <h2>10. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect:</p>
+      <ul>
+        <li>Changes in our practices or services</li>
+        <li>New features or functionality</li>
+        <li>Operational, legal, or regulatory requirements</li>
+        <li>Improvements in security or privacy measures</li>
+      </ul>
+      <p>We will notify you of any material changes by:</p>
+      <ul>
+        <li>Updating the "Last Updated" date at the top of this policy</li>
+        <li>Posting the new policy on our website</li>
+        <li>Providing prominent notice in the extension if changes are significant</li>
+      </ul>
+      <p>Your continued use of Hive API Client after changes constitutes your acceptance of the updated policy.</p>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>11. Contact Us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:</p>
+      <ul>
+        <li><strong>📧 Email:</strong> support@hiveapi.local</li>
+        <li><strong>💬 GitHub:</strong> <a href="#" style="color: var(--accent);">Your GitHub Repository</a></li>
+        <li><strong>🐛 Issues:</strong> Open an issue on our repository for privacy-related concerns</li>
+      </ul>
+      <p>We aim to respond to privacy inquiries within 30 days.</p>
+    </section>
+
+    <!-- Rights -->
+    <section class="section" id="rights">
+      <h2>12. Your Rights</h2>
+      <p>You have the following rights regarding your data:</p>
+      <ul>
+        <li><strong>🔍 Right to Access:</strong> Access all your stored data at any time through the extension interface</li>
+        <li><strong>🗑️ Right to Delete:</strong> Delete your data by uninstalling the extension or manually deleting individual items</li>
+        <li><strong>📤 Right to Export:</strong> Export your data if we provide that functionality (future enhancement)</li>
+        <li><strong>🚫 Right to Opt-Out:</strong> Disable features or uninstall the extension at any time</li>
+        <li><strong>❓ Right to Information:</strong> Request information about what data we store about you</li>
+        <li><strong>🛡️ Right to Privacy:</strong> Your data remains private and is never shared with third parties</li>
+      </ul>
+    </section>
+
+    <!-- Compliance -->
+    <section class="section" id="compliance">
+      <h2>13. Compliance</h2>
+      <p>Hive API Client complies with and respects:</p>
+      <ul>
+        <li><strong>Chrome Web Store:</strong> Developer Program Policies and Content Policies</li>
+        <li><strong>GDPR:</strong> (General Data Protection Regulation) By not collecting personal data and maintaining local-only storage</li>
+        <li><strong>CCPA:</strong> (California Consumer Privacy Act) By maintaining local-only storage and providing data control</li>
+        <li><strong>Privacy by Design:</strong> Privacy is built into every aspect of the extension</li>
+        <li><strong>Transparency:</strong> Clear documentation of all permissions and data practices</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>✅ Verified:</strong> No personal data collection • No tracking • No analytics • No cloud storage • No data sharing with third parties</p>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="section">
+      <p style="padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.95rem;">
+        By using Hive API Client, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with any part of this policy, please do not use the extension.
+      </p>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">
+        <strong>Your privacy is not negotiable.</strong> Hive API Client is built on the principle that your data belongs to you and should never be compromised.
+      </p>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-sections">
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="https://chrome.google.com/webstore">Install Extension</a></li>
+          <li><a href="#">GitHub Repository</a></li>
+          <li><a href="#">Report an Issue</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="mailto:support@hiveapi.local">Email Support</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Documentation</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
+    <p>&copy; 2026 Hive API Client. All rights reserved.</p>
+    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Built with privacy-first principles • No tracking • No data collection • Your data, your control</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('hiveTheme', newTheme);
+      
+      button.textContent = newTheme === 'dark' ? '🌙 Dark' : '☀️ Light';
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('hiveTheme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '🌙 Dark' : '☀️ Light';
+    });
+
+    // Smooth scrolling for TOC links
+    document.querySelectorAll('.toc-container a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
